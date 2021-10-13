@@ -1,14 +1,5 @@
 package day30.polymorphism;
 
-public class Car {
-
-    protected String color;
-
-    public Car(final String color) {
-        this.color = color;
-    }
-
-    public void describe() {
-        System.out.println("Car color: " + color);
-    }
+public interface Car {
+    public void describe();
 }

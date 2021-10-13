@@ -2,10 +2,23 @@ package day30.polymorphism;
 
 public class Main {
     public static void main(String[] args) {
-        Car cabriolet2 = new Cabriolet("blue", false);
-        Car suv2 = new SUV("brown", 1.92);
+        Car[] arr = new Car[1000];
+        for (int i = 0; i < arr.length; i++) {
+            if (i % 2 == 0) {
+                arr[i] = new Cabriolet(i % 4 == 0);
+            } else {
+                arr[i] = new SUV(1 + (double)i/100);
+            }
+        }
 
-        cabriolet2.describe();
-        suv2.describe();
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println("iter: " + i);
+            arr[i].describe();
+            openDoor(arr[i]);
+        }
+    }
+
+    private static void openDoor(Car car) {
+        System.out.println("I'm opening the door of the car: " + car);
     }
 }

@@ -1,11 +1,10 @@
 package day30.polymorphism;
 
-public class Cabriolet extends Car {
+public class Cabriolet implements Car {
 
     private boolean roofOpened;
 
-    public Cabriolet(final String color, final boolean roofOpened) {
-        super(color);
+    public Cabriolet(final boolean roofOpened) {
         this.roofOpened = roofOpened;
     }
 
@@ -20,7 +19,6 @@ public class Cabriolet extends Car {
     @Override
     public void describe() {
         System.out.println("Cabriolet description start");
-        super.describe();
         System.out.println("Cabriolet has opened roof: " + roofOpened);
         System.out.println("Cabriolet description end");
     }
@@ -29,7 +27,6 @@ public class Cabriolet extends Car {
     public String toString() {
         return "Cabriolet{" +
                 "roofOpened=" + roofOpened +
-                ", color='" + color + '\'' +
                 "} ";
     }
 }

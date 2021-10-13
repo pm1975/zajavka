@@ -1,11 +1,10 @@
 package day30.polymorphism;
 
-public class SUV extends Car {
+public class SUV implements Car {
 
     private double height;
 
-    public SUV(final String color, final double height) {
-        super(color);
+    public SUV(final double height) {
         this.height = height;
     }
 
@@ -20,7 +19,6 @@ public class SUV extends Car {
     @Override
     public void describe() {
         System.out.println("SUV description start");
-        super.describe();
         System.out.println("SUV height: " + height);
         System.out.println("SUV description end");
     }
@@ -28,8 +26,7 @@ public class SUV extends Car {
     @Override
     public String toString() {
         return "SUV{" +
-                "color='" + color + '\'' +
-                ", height=" + height +
+                "height=" + height +
                 "} ";
     }
 }
