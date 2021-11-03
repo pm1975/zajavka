@@ -10,6 +10,11 @@ public class FoodFactory {
         foodFactory.run();
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
     private void run() {
         ProducingMan[] producingPeople = new ProducingMan[]{
                 new Producer("Alicja", "Zupowa"),
@@ -43,5 +48,6 @@ public class FoodFactory {
         for (Food food : foods) {
             System.out.println(food);
         }
+
     }
 }
