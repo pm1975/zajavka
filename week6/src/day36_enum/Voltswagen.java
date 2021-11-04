@@ -1,27 +1,75 @@
 package day36_enum;
 
-public enum Voltswagen {
-    PASSAT("white", 2020),
-    GOLF("red", 1020),
-    ARTEON("green", 3040),
-    TIGUAN("blue", 2021),
-    TUAREG("brown", 3020);
+import java.util.LinkedList;
+import java.util.List;
 
-    private String colors;
+public enum Voltswagen implements MyExampleInterface {
+    PASSAT("white", 2020) {
+        @Override
+        public Voltswagen getIfMissing() {
+            return GOLF;
+        }
+    },
+    GOLF("red", 1020){
+        @Override
+        public Voltswagen getIfMissing() {
+            return ARTEON;
+        }
+    },
+    ARTEON("green", 3040){
+        @Override
+        public Voltswagen getIfMissing() {
+            return TUAREG;
+        }
+    },
+    TIGUAN("blue", 2021){
+        @Override
+        public Voltswagen getIfMissing() {
+            return PASSAT;
+        }
+    },
+    TUAREG("brown", 3020){
+        @Override
+        public Voltswagen getIfMissing() {
+            return TIGUAN;
+        }
+    };
+
+    private String color;
 
     private int productionYear;
 
     Voltswagen(String colors, int productionYear) {
-        this.colors = colors;
+        this.color = colors;
         this.productionYear = productionYear;
     }
 
-    public String getColors() {
-        return colors;
+//    public static List<Voltswagen> ofColor(String color) {
+//        List<Voltswagen> result = new LinkedList<>();
+//        for (Voltswagen value : values()) {
+//            if (color.equals(value.getColor())) {
+//                result.add(value);
+//            }
+//        }
+//        return result;
+//    }
+    public static Voltswagen ofColor(String color) {
+        for (Voltswagen value : values()) {
+            if (color.equals(value.getColor())) {
+                return value;
+            }
+        }
+        throw new IllegalArgumentException("Color: " + color + " not found");
     }
 
-    public void setColors(String colors) {
-        this.colors = colors;
+    public abstract Voltswagen getIfMissing();
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public int getProductionYear() {
@@ -34,9 +82,11 @@ public enum Voltswagen {
 
     @Override
     public String toString() {
-        return "Voltswagen{" +
-                "colors='" + colors + '\'' +
-                ", productionYear=" + productionYear +
-                "} " + super.toString();
+        return super.toString();
+    }
+
+    @Override
+    public String doSomething() {
+        return productionYear + "ohoho";
     }
 }
