@@ -12,7 +12,7 @@ public class question9 {
         list.add(Integer.parseInt("3"));
         list.add(Integer.parseInt("4"));
         list.add(5);
-        for (Integer element : list) {
+        for (int element : list) {
             System.out.print(element);
         }
     }
